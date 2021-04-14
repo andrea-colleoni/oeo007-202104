@@ -9,3 +9,6 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+/hibernate-release-5.4.30.Final
+/mysql-connector-java-8.0.23
+**/.metadata/**
