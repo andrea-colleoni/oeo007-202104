@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,10 +52,13 @@ public class Persona {
 	private Integer altezzaInCm;
 	@Column(columnDefinition = "bit not null default false")
 	private Boolean attivo;
-	
+	private String nuova;
 //	@OneToOne
 //	private Indirizzo indirizzoPrincipale;
-	@OneToMany(mappedBy = "persona", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+	@OneToMany(
+			mappedBy = "persona", 
+			cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE},
+			fetch = FetchType.LAZY)
 	private List<Indirizzo> altriIndirizzi; // = new ArrayList<Indirizzo>();
 	
 	public void addIndirizzo(Indirizzo i) {
@@ -119,5 +123,15 @@ public class Persona {
 	}
 	public void setAltriIndirizzi(List<Indirizzo> altriIndirizzi) {
 		this.altriIndirizzi = altriIndirizzi;
+	}
+
+
+	public String getNuova() {
+		return nuova;
+	}
+
+
+	public void setNuova(String nuova) {
+		this.nuova = nuova;
 	}
 }

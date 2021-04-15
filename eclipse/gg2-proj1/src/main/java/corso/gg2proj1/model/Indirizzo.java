@@ -2,6 +2,7 @@ package corso.gg2proj1.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Indirizzo {
 	private String pronvicia;
 	
 	//@OneToOne(mappedBy = "indirizzoPrincipale")
-	@ManyToOne(cascade = {CascadeType.PERSIST})  // !! CascadeType.REMOVE ???
+	@ManyToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)  // !! CascadeType.REMOVE ???
 	@JoinColumn(name = "persona_id")
 	private Persona persona;
 	
