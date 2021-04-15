@@ -1,4 +1,4 @@
-package corso.model;
+package corso.gg2proj1.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -18,7 +21,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "pers_001")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@DiscriminatorColumn(name = "tipo_persona")
+//@Table(name = "pers_001")
 @NamedQueries({
 	@NamedQuery(name = "persona.all", query = "select p from Persona p"),
 	@NamedQuery(name = "persona.piuAlteDi", query = "select p from Persona p where p.altezzaInCm > :altezza")
@@ -31,7 +36,7 @@ public class Persona {
 	// deve essere elencata in persistence.xml
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "codfisc", length = 20)
 	private String codiceFiscale;

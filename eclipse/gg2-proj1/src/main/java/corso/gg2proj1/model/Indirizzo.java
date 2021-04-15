@@ -1,4 +1,4 @@
-package corso.model;
+package corso.gg2proj1.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
